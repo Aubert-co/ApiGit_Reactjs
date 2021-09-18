@@ -38,7 +38,3 @@ plugins:[
     
 ]
 }
-/**
- * principais conceitos webpack
- * Entry,output,loaders,pluginse mode
- */
