@@ -4,10 +4,13 @@ import Campos from './campos'
 function Header(){
 
     return (       
-        <> 
-    <Search/>
-    <Campos/>
-    </>
+    <header> 
+        <Search/>
+        <div className="campos">
+            <Campos/>
+            <MostUsedLanguages/>
+        </div>
+    </header>
     )
 }
 
