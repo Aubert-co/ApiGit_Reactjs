@@ -4,25 +4,26 @@ import { useSelector, useDispatch } from 'react-redux'
 function renderDatas({name,login,public_repos,location,avatar_url},ind){
     return (
         <>
-        <div className="cotent" key={ind}>
+        <div  key={ind}>
             <div className="imgs">
-                <img src={avatar_url}/>
+                <img width="200px" height="200px" src={avatar_url}/>
             </div>
-            <div className="campos">
-                <h3>{name}</h3>
-                <h3>{login}</h3>
-                <h3>{public_repos}</h3>
-                <h3>{location}</h3>
+            <div className="itens">
+                <h1>Name:{name}</h1>
+                <h3>Username:{login}</h3>
+                <h3>repositorio:{public_repos}</h3>
+                <h3>Location{location}</h3>
+             
             </div>
         </div>
         </>
     )
 }
 function Campos(){
-    const data = useSelector(state=>state.actions.data)
+    const data = useSelector(state=>state.actions.dataUsers)
     useEffect(()=>{
         const {avatar_url,login,name,public_repos,email,location} = data
-       console.log(data)
+      
     },[data])
 
     return data.map(renderDatas)
