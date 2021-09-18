@@ -4,7 +4,8 @@ import FindUsers from "../services/findUsers";
 export const actionSlice = createSlice({
     name:'actions',
     initialState:{
-        data:[]
+        dataUsers:[],
+        dataRepos:[]
     },
     reducers:{
        findUsers: (state,datas)=>{
@@ -14,17 +15,18 @@ export const actionSlice = createSlice({
             .finally((datas)=>{
                 state.data.push(datas)
             })*/
-            state.data = []
-            state.data.push(datas.payload)
+            state.dataUsers = []
+            state.dataUsers.push(datas.payload)
            
         },
-        SelectDatas:(state)=>{
-           console.log(state.data)
+        findRepositories:(state,datas)=>{
+            state.dataRepos = []
+            state.dataRepos.push(datas.payload)
         }
 
     }
 })
 
-export const {findUsers,SelectDatas} = actionSlice.actions
+export const {findUsers,findRepositories} = actionSlice.actions
 
 export default actionSlice.reducer
