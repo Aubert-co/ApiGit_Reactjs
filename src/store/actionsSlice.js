@@ -22,6 +22,7 @@ export const actionSlice = createSlice({
         findRepositories:(state,datas)=>{
             state.dataRepos = []
             state.dataRepos.push(datas.payload)
+          
         }
 
     }
