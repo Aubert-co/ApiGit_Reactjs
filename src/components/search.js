@@ -12,11 +12,14 @@ function Search(){
       fetch(`https://api.github.com/users/aubert-co`)
         .then((data)=>data.json())
         .then((datas)=>dispatch(findUsers(datas)))
+
         .finally(()=>{
             fetch("https://api.github.com/users/Aubert-co/subscriptions")
             .then((data)=>data.json())
             .then((datas)=>{
-                dispatch(findRepositories(datas))
+                const urls = datas.map(({languages_url})=>languages_url)
+                dispatch(findRepositories(urls))
+  
             })
         })
     }catch(err){
