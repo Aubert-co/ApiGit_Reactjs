@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import FindUsers from "../services/findUsers";
+
 
 export const actionSlice = createSlice({
     name:'actions',
     initialState:{
         dataUsers:[],
-        dataRepos:[]
+        dataRepos:[],
+        dataMostUsedLanguages:[]
     },
     reducers:{
        findUsers: (state,datas)=>{
@@ -15,19 +16,20 @@ export const actionSlice = createSlice({
             .finally((datas)=>{
                 state.data.push(datas)
             })*/
-            state.dataUsers = []
-            state.dataUsers.push(datas.payload)
+            state.dataUsers = [datas.payload]
+    
            
         },
         findRepositories:(state,datas)=>{
-            state.dataRepos = []
-            state.dataRepos.push(datas.payload)
-          
+            state.dataRepos = [datas.payload]
+        },
+        findMostUsedLanguages:(state,datas)=>{
+           state.dataMostUsedLanguages = [...datas.payload]
         }
 
     }
 })
 
-export const {findUsers,findRepositories} = actionSlice.actions
+export const {findUsers,findRepositories,findMostUsedLanguages} = actionSlice.actions
 
 export default actionSlice.reducer
