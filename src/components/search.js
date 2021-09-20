@@ -1,30 +1,24 @@
 import React,{useEffect, useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import  {findUsers,findRepositories} from '../store/actionsSlice'
+import  {findUsers,findRepositories,findMostUsedLanguages} from '../store/actionsSlice'
+import {FindUsersService,FindSubscritionsService} from '../services/index'
+
 
 function Search(){
     const [inputValue,SetInput] = useState('Search a user') 
-    const data = useSelector(state=>state.actions.dataUsers)
+
     const dispatch  = useDispatch()
 
-    const OnSearch = ()=>{
-    try{
-      fetch(`https://api.github.com/users/aubert-co`)
-        .then((data)=>data.json())
-        .then((datas)=>dispatch(findUsers(datas)))
+    const OnSearch = async()=>{
+        const  data_user =await FindUsersService('aubert-co')
+        const {subscriptions_url} = data_user
+    
+        dispatch(findUsers(data_user))
 
-        .finally(()=>{
-            fetch("https://api.github.com/users/Aubert-co/subscriptions")
-            .then((data)=>data.json())
-            .then((datas)=>{
-                const urls = datas.map(({languages_url})=>languages_url)
-                dispatch(findRepositories(urls))
-  
-            })
-        })
-    }catch(err){
-        console.log('err')
-    }
+        const  subs_users = await FindSubscritionsService(subscriptions_url)
+            
+        dispatch(findMostUsedLanguages(subs_users))
+
     }
     const OnchangeInput = ({target})=>{
         SetInput(target.value)
