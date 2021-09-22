@@ -1,8 +1,8 @@
 import React,{useEffect, useState} from 'react'
 import { useSelector } from 'react-redux'
-
+const vvs = {}
 function convertValues(array){
-    const vvs = {}
+
     const css =array.map((val)=>{
         const k = Object.keys(val)
         k.forEach((value,inde,arrs)=>{
@@ -26,25 +26,34 @@ function MostUsedLanguages(){
     const data = useSelector(state=>state.actions.dataMostUsedLanguages)
     var a = [ ]
     const [Value,SetValue] = useState([])
-    const v  = async (link)=>{
-        
+    
+  
+    async function mm(){
+        const vs = async ({languages_url})=>{
+            const values  =await fetch(languages_url)
+            const js = await values.json()
+            a.push(js)
+            const m = convertValues(a)
+        return m
+        }
+        const values = data.map(vs)
+        return values
+          
     }
-
-    useEffect(()=>{
+      
+    
+    useEffect(async()=>{
        
-        data.map(({languages_url})=>{ 
-            const m =  fetch(languages_url)
+      /*const bb =   data.map(({languages_url})=>{ 
+            return fetch(languages_url)
             .then((datas)=>datas.json())
-            .then((d)=>{
-                a.push(d)
-            })
-            .finally(()=>{
-                console.log(a)
-            })
-        })
-    
-    
-       
+            .then((d)=>d)
+            .finally((d)=>d)
+        })*/
+       mm()
+       .then((d)=>{
+           console.log(d)
+       })
     },[data])
     return (
         <h1>Ola</h1>
