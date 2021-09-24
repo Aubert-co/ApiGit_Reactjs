@@ -15,9 +15,9 @@ function Search(){
     
         dispatch(findUsers(data_user))
 
-        const  subs_users = await FindSubscritionsService(subscriptions_url)
+        //const  subs_users = await FindSubscritionsService(subscriptions_url)
             
-        dispatch(findMostUsedLanguages(subs_users))
+        //dispatch(findMostUsedLanguages(subs_users))
 
     }
     const OnchangeInput = ({target})=>{
