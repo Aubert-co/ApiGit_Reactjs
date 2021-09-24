@@ -14,9 +14,9 @@ return values
 })*/
 }
 
-async function FindSubscritionsService(subscriptions_url){
+/*async function FindSubscritionsService(subscriptions_url){
     const datas = await fetch(subscriptions_url)
     const jsonDatas = await datas.json()
     return jsonDatas
-}
+}*/
 export  {FindUsersService,FindSubscritionsService}
