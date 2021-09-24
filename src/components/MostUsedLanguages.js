@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+/*import React,{useEffect, useState} from 'react'
 import { useSelector } from 'react-redux'
 const vvs = {}
 function convertValues(array){
@@ -15,11 +15,11 @@ function convertValues(array){
                 vvs[name] +=v
             })
     })
-    /*const keys = Object.keys(vvs)
+    const keys = Object.keys(vvs)
     .forEach((val)=>{
         const number = vvs[val]
         console.log((number/1000))
-    })*/
+    })
     return vvs
     }
 function MostUsedLanguages(){
@@ -44,12 +44,12 @@ function MostUsedLanguages(){
     
     useEffect(async()=>{
        
-      /*const bb =   data.map(({languages_url})=>{ 
+      const bb =   data.map(({languages_url})=>{ 
             return fetch(languages_url)
             .then((datas)=>datas.json())
             .then((d)=>d)
             .finally((d)=>d)
-        })*/
+        })
        mm()
        .then((d)=>{
            console.log(d)
@@ -61,4 +61,4 @@ function MostUsedLanguages(){
 }
 
 
-export default MostUsedLanguages
+export default MostUsedLanguages*/
