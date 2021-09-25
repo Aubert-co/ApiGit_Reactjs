@@ -19,4 +19,4 @@ return values
     const jsonDatas = await datas.json()
     return jsonDatas
 }*/
-export  {FindUsersService,FindSubscritionsService}
+export  {FindUsersService}
